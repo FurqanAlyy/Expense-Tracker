@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "_id": "47b46709-5356-4c44-9190-acb78b0f3f77",
+    "title": "buy a shirt",
+    "amount": 2500,
+    "category": "Shopping",
+    "date": "2026-05-26T00:00:00.000Z",
+    "notes": "bought a shirt for my personal use",
+    "createdAt": "2026-05-28T11:06:27.601Z",
+    "updatedAt": "2026-05-28T11:06:27.601Z"
+  },
+  {
+    "_id": "58b04ea4-a824-45ac-a860-626a837d0d14",
+    "title": "buy oats",
+    "amount": 1500,
+    "category": "Food",
+    "date": "2026-05-27T00:00:00.000Z",
+    "notes": "bought oats for the workout meal",
+    "createdAt": "2026-05-28T11:07:04.845Z",
+    "updatedAt": "2026-05-28T11:07:04.845Z"
+  }
+]

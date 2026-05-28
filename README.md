@@ -7,6 +7,8 @@ A full-stack MERN expense tracker with CRUD, filtering, and CSV export. Data per
 - Node.js >= 18
 
 ## Run on a fresh machine
+First download the repo from github on your local system
+https://github.com/FurqanAlyy/Expense-Tracker.git
 
 ### 1. Backend
 

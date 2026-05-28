@@ -4,6 +4,9 @@
 
 **Prerequisites:** Node.js >= 18. No database needed.
 
+First download the repo from github on your local system
+https://github.com/FurqanAlyy/Expense-Tracker.git
+
 ```bash
 # Backend
 cd backend

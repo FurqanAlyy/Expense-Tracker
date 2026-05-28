@@ -1,42 +1,30 @@
 # Expense Tracker
 
-A full-stack MERN expense tracker with CRUD, filtering, and CSV export.
+A full-stack MERN expense tracker with CRUD, filtering, and CSV export. Data persists to a local JSON file — no database setup required.
 
 ## Prerequisites
 
 - Node.js >= 18
-- A MongoDB connection string (MongoDB Atlas free tier works)
 
-## Setup & Run
+## Run on a fresh machine
 
-### 1. Clone and enter the project
-
-```bash
-git clone <repo-url>
-cd expenseTracker
-```
-
-### 2. Backend
+### 1. Backend
 
 ```bash
 cd backend
-cp .env.example .env
-# Edit .env and set your MONGO_URI
 npm install
 npm run dev
 ```
 
-Backend runs on `http://localhost:5000`
+Backend runs on `http://localhost:5000`. Expense data is stored in `backend/data/expenses.json`.
 
-### 3. Frontend (new terminal)
+### 2. Frontend (new terminal)
 
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-
-Frontend runs on `http://localhost:5173`
 
 Open `http://localhost:5173` in your browser.
 
@@ -47,12 +35,16 @@ Open `http://localhost:5173` in your browser.
 - Live spending summary with per-category totals
 - **Export all expenses to CSV** — click the "Export CSV" button
 
+## Persistence
+
+All expenses are saved to `backend/data/expenses.json`. Close the server, restart it, and your data will still be there.
+
 ## API Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
 | GET | /api/expenses | List expenses (supports ?search, ?category, ?startDate, ?endDate) |
+| GET | /api/expenses/export/csv | Download all expenses as CSV |
 | POST | /api/expenses | Create expense |
 | PUT | /api/expenses/:id | Update expense |
 | DELETE | /api/expenses/:id | Delete expense |
-| GET | /api/expenses/export/csv | Download CSV |

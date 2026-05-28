@@ -54,23 +54,23 @@ File: `backend/utils/storage.js`, lines 8–11
 
 ## 4. AI usage
 
-**Tool used:** Claude (claude-sonnet-4-6 via Claude Code)
+I used Claude (Sonnet, through Claude Code) while building this. Here's where:
 
-| Where | What I asked | What it gave |
-|-------|-------------|--------------|
-| `routes/expenses.js` — initial scaffold | Asked to generate CRUD routes | Generated routes with MongoDB/Mongoose |
-| `utils/storage.js` | Asked to replace Mongoose with file-based storage | Generated `readExpenses`/`writeExpenses` with try/catch |
-| `routes/expenses.js` CSV export | Asked for a CSV export endpoint | Generated the route but placed it after `/:id` |
-| `index.css` | Asked for a clean card-based layout | Generated styles with dark-mode variables |
+- **CRUD routes** — I had it scaffold the initial Express routes for me. It first gave me a version using MongoDB/Mongoose, which I didn't want, so I had it redo the storage as flat-file JSON instead.
+- **`utils/storage.js`** — generated the `readExpenses`/`writeExpenses` helpers with the try/catch around the file read.
+- **CSV export route** — I asked for an export endpoint.
+- **`index.css`** — asked for a card-based layout to start from.
 
-**What I changed:** The AI placed the `/export/csv` route *after* the `/:id` route. In Express, `/:id` is a wildcard — it would match the literal string `"export"` and treat it as an ID lookup, meaning the CSV endpoint would never be reached. I moved `/export/csv` above `/:id` to fix this. This is a subtle ordering bug that the AI didn't flag.
+The thing I actually had to fix myself: the AI put the `/export/csv` route *after* the `/:id` route in `routes/expenses.js`. In Express that's broken, because `/:id` matches anything — it would've grabbed the string `"export"` and treated it as an ID, so the CSV endpoint would never run. Took me a bit to figure out why my export kept 404-ing weird. I moved `/export/csv` above `/:id` and it worked. The AI never warned me about ordering.
 
-I also stripped the dark-mode CSS variables — the AI defaulted to including them, but shipping half-implemented theming that does nothing would look worse than not having it at all.
+I also deleted the dark-mode CSS variables it threw in. It added them by default, but they didn't actually do anything — I figured shipping half-built theming that does nothing looks worse than not having it, so I cut it.
 
 ---
 
 ## 5. Honest gap
 
-**The gap:** The file storage has no write locking. If two requests arrive simultaneously (e.g., two rapid deletes), both could read the same snapshot of `expenses.json`, make their change, and the second write would silently overwrite the first — one deletion would be lost.
+**The gap:** my file storage has no write locking. If two requests hit at the same time (say two quick deletes), both can read the same version of `expenses.json`, make their edit, and the second write overwrites the first — so one of the deletes just disappears.
 
-**What I'd do with another day:** Add a simple async mutex (e.g., the `async-mutex` npm package) around every read-modify-write cycle in `storage.js`. Alternatively, migrate to SQLite with the `better-sqlite3` package, which handles concurrent access correctly at the OS level and is still zero-config for anyone cloning the repo.
+Honestly, if this were going to be deployed for real, I wouldn't use a JSON file at all — I'd go with MongoDB or another proper database that handles concurrent writes for you. For this assessment I picked file-based storage on purpose because it's zero-setup for whoever's running it and you can see the data right there in the repo, but I know it doesn't scale past a single local user.
+
+**What I'd do with another day:** I'd switch the storage to a real database like MongoDB. It handles multiple writes at once on its own, so I wouldn't have to worry about one change overwriting another, and it's a better fit if the app ever grows beyond a single local user.

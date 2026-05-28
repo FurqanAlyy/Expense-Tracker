@@ -9,12 +9,12 @@ export default function Summary({ expenses }) {
   return (
     <div className="summary">
       <div className="summary-total">
-        Total: <strong>${total.toFixed(2)}</strong>
+        Total: <strong>Rs {total.toFixed(2)}</strong>
       </div>
       <div className="summary-cats">
         {Object.entries(byCategory).map(([cat, amt]) => (
           <span key={cat} className={`category-badge cat-${cat.toLowerCase()}`}>
-            {cat}: ${amt.toFixed(2)}
+            {cat}: Rs {amt.toFixed(2)}
           </span>
         ))}
       </div>

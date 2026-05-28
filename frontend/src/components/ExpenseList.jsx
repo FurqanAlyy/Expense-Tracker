@@ -15,7 +15,7 @@ export default function ExpenseList({ expenses, onEdit, onDelete }) {
             {e.notes && <span className="expense-notes">{e.notes}</span>}
           </div>
           <div className="expense-right">
-            <span className="expense-amount">${Number(e.amount).toFixed(2)}</span>
+            <span className="expense-amount">Rs {Number(e.amount).toFixed(2)}</span>
             <button onClick={() => onEdit(e)} className="icon-btn edit-btn" title="Edit">✏️</button>
             <button onClick={() => onDelete(e._id)} className="icon-btn delete-btn" title="Delete">🗑️</button>
           </div>

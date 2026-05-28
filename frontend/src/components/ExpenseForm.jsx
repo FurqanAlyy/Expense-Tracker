@@ -38,8 +38,8 @@ export default function ExpenseForm({ onSubmit, initial, onCancel }) {
         <input name="title" value={form.title} onChange={handle} required placeholder="e.g. Lunch" />
       </label>
 
-      <label>Amount ($)
-        <input name="amount" type="number" step="0.01" min="0.01" value={form.amount} onChange={handle} required placeholder="0.00" />
+      <label>Amount (Rs)
+        <input name="amount" type="number" step="0.01" min="0.01" value={form.amount} onChange={handle} required placeholder="500" />
       </label>
 
       <label>Category

@@ -5,7 +5,6 @@ export default function Summary({ expenses }) {
     acc[e.category] = (acc[e.category] || 0) + e.amount;
     return acc;
   }, {});
-
   return (
     <div className="summary">
       <div className="summary-total">

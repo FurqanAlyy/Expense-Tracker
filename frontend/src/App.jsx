@@ -29,7 +29,6 @@ export default function App() {
   }, [filters]);
 
   useEffect(() => { fetchExpenses(); }, [fetchExpenses]);
-
   const handleCreate = async (data) => {
     try {
       await createExpense(data);
@@ -72,7 +71,6 @@ export default function App() {
       setError('Failed to export CSV.');
     }
   };
-
   return (
     <div className="app">
       <header>
@@ -81,7 +79,6 @@ export default function App() {
       </header>
 
       {error && <div className="error-banner">{error}</div>}
-
       <ExpenseForm
         onSubmit={editing ? handleUpdate : handleCreate}
         initial={editing}

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 const CATEGORIES = ['Food', 'Transport', 'Shopping', 'Health', 'Entertainment', 'Utilities', 'Other'];
-
 const empty = { title: '', amount: '', category: 'Food', date: '', notes: '' };
 
 export default function ExpenseForm({ onSubmit, initial, onCancel }) {

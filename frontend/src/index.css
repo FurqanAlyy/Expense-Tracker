@@ -6,15 +6,12 @@ body {
   color: #1a1a2e;
   min-height: 100vh;
 }
-
 #root { max-width: 100%; text-align: left; }
-
 .app {
   max-width: 800px;
   margin: 0 auto;
   padding: 24px 16px;
 }
-
 header {
   display: flex;
   justify-content: space-between;

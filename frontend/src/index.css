@@ -1,0 +1,182 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f4f6f9;
+  color: #1a1a2e;
+  min-height: 100vh;
+}
+
+#root { max-width: 100%; text-align: left; }
+
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+header h1 { font-size: 1.8rem; color: #2d3748; font-weight: 700; }
+
+.export-btn {
+  background: #38a169;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.export-btn:hover { background: #2f855a; }
+
+.error-banner {
+  background: #fed7d7;
+  color: #c53030;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+/* Form */
+.expense-form {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+.expense-form h2 { margin-bottom: 14px; font-size: 1.1rem; color: #2d3748; }
+.expense-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+.expense-form input,
+.expense-form select,
+.expense-form textarea {
+  padding: 8px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  width: 100%;
+  background: #f9fafb;
+}
+.expense-form input:focus,
+.expense-form select:focus,
+.expense-form textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+}
+.form-actions { display: flex; gap: 10px; margin-top: 4px; }
+.form-actions button {
+  padding: 9px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  background: #667eea;
+  color: white;
+}
+.form-actions button:hover { background: #5a67d8; }
+.form-actions button.secondary { background: #e2e8f0; color: #4a5568; }
+.form-actions button.secondary:hover { background: #cbd5e0; }
+
+/* Summary */
+.summary {
+  background: white;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.summary-total { font-size: 1rem; color: #4a5568; }
+.summary-total strong { color: #2d3748; font-size: 1.15rem; }
+.summary-cats { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.filters input,
+.filters select {
+  padding: 7px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  background: white;
+  flex: 1;
+  min-width: 140px;
+}
+
+/* Expense list */
+.expense-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.expense-item {
+  background: white;
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.07);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 4px;
+  align-items: center;
+}
+.expense-main { display: flex; align-items: center; gap: 8px; }
+.expense-title { font-weight: 600; font-size: 0.95rem; }
+.expense-sub { font-size: 0.8rem; color: #718096; display: flex; gap: 8px; }
+.expense-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  grid-row: 1 / 3;
+}
+.expense-amount { font-weight: 700; font-size: 1rem; color: #2d3748; }
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px;
+  border-radius: 4px;
+  line-height: 1;
+}
+.icon-btn:hover { background: #f0f0f0; }
+
+/* Category badges */
+.category-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+.cat-food           { background: #fef3c7; color: #92400e; }
+.cat-transport      { background: #dbeafe; color: #1e40af; }
+.cat-shopping       { background: #ede9fe; color: #5b21b6; }
+.cat-health         { background: #dcfce7; color: #14532d; }
+.cat-entertainment  { background: #fee2e2; color: #991b1b; }
+.cat-utilities      { background: #e0f2fe; color: #075985; }
+.cat-other          { background: #f3f4f6; color: #374151; }
+
+.empty { text-align: center; color: #a0aec0; margin-top: 24px; }
+.loading { text-align: center; color: #718096; padding: 20px; }

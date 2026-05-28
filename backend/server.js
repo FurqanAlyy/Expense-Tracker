@@ -9,7 +9,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api/expenses', expenseRoutes);
-
 app.get('/health', (_, res) => res.json({ status: 'ok' }));
 
 const PORT = process.env.PORT || 5000;
